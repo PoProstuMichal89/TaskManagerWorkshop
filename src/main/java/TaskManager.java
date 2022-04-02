@@ -1,22 +1,15 @@
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.List;
+import java.util.Arrays;
 import java.util.Scanner;
-import java.util.logging.SocketHandler;
 
 public class TaskManager {
 
     static final String[] menu = {"add", "remove", "list", "exit"};
     static final String filePath = "src/main/resources/tasks.csv";
+    static String[][] tasks;
 
 
     public static void main(String[] args) {
         //zdefiniowanie tablicy do przechowywania zadań
-        String[][] tasks = null;
         tasks = GetTasksToArray.getTasks(filePath);
 
         //wyświetlanie menu głównego
@@ -31,9 +24,10 @@ public class TaskManager {
             String choosenAction = scan.nextLine();
             switch (choosenAction) {
                 case "exit":
+                    System.exit(0);
                     break;
                 case "add":
-                    AddTask.addTask(tasks);
+                    addTask();
                     System.out.println("Thanks you. Your's task is added");
                     break;
                 case "remove":
@@ -57,5 +51,25 @@ public class TaskManager {
 
     }
 
+    private static void addTask(){
 
+        //zapisywanie inputu użytkownika do zmiennych
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Please add task description: ");
+        String taskDescription = scan.nextLine();
+        System.out.println("Please add task due date");
+        String taskDate = scan.nextLine();
+        System.out.println("Is your task is important: true/false: ");
+        String taskProirity = scan.nextLine();
+
+        // zwiększenie rozmiaru tablicy na nowe wiersze
+        tasks= Arrays.copyOf(tasks, tasks.length + 1);
+
+        //zapisywanie inputu ze zmiennych do tablicy
+        tasks[tasks.length-1]=new String[3]; //dodanie nowych kolumn do ostatniego wiersza
+        tasks[tasks.length-1][0]=taskDescription;
+        tasks[tasks.length-1][1]=taskDate;
+        tasks[tasks.length-1][2]=taskProirity;
+
+    }
 }

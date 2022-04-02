@@ -13,7 +13,7 @@ public class ListOfTasks {
 
 //    public static void main(String[] args) {
 //        String[][] task=null;
-//        task=GetTasksToArray.getTasks("src/main/resources/tasks.csv");
+//        task=AnotherMethods.GetTasksToArray.getTasks("src/main/resources/tasks.csv");
 //        displayListsOfTasks(task);
 //    }
 
