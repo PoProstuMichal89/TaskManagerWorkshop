@@ -2,6 +2,10 @@ import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.math.NumberUtils;
 
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -28,6 +32,7 @@ public class TaskManager {
             String choosenAction = scan.nextLine();
             switch (choosenAction) {
                 case "exit":
+                    saveTabToFile(filePath,tasks);
                     System.exit(0);
                     break;
                 case "add":
@@ -42,7 +47,6 @@ public class TaskManager {
                 case "list":
                     System.out.println("List of tasks: ");
                     ListOfTasks.displayListsOfTasks(tasks);
-
                     break;
 
                 default:
@@ -95,5 +99,20 @@ public class TaskManager {
             System.out.println("Element not exist in tab");
         }
 
+    }
+
+    public static void saveTabToFile(String fileName, String[][] tab) {
+        Path dir = Paths.get(fileName);
+
+        String[] lines = new String[tasks.length];
+        for (int i = 0; i < tab.length; i++) {
+            lines[i] = String.join(",", tab[i]);
+        }
+
+        try {
+            Files.write(dir, Arrays.asList(lines));
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
     }
 }
