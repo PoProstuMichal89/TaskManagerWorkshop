@@ -26,7 +26,7 @@ public class TaskManager {
         //   ---Choose of action logic --- //
 
         Scanner scan = new Scanner(System.in);
-        System.out.println("your's action: ");
+        System.out.print("your's action: ");
         while (scan.hasNextLine()) {
             String choosenAction = scan.nextLine();
             switch (choosenAction) {
@@ -34,19 +34,23 @@ public class TaskManager {
                     break;
                 case "add":
                     AddTask.addTask(tasks);
+                    System.out.println("Thanks you. Your's task is added");
                     break;
                 case "remove":
                     break;
 
                 case "list":
+                    System.out.println("List of tasks: ");
+                    ListOfTasks.displayListsOfTasks(tasks);
+
                     break;
 
                 default:
                     System.out.println("Choose a correct action");
 
             }
-            System.out.println("Thanks you. Your's task is added");
             DisplayMenu.display(menu);
+            System.out.print("your's action: ");
 
         }
 
