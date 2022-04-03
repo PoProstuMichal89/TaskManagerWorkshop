@@ -33,6 +33,8 @@ public class TaskManager {
             switch (choosenAction) {
                 case "exit":
                     saveTabToFile(filePath,tasks);
+                    System.out.println(ConsoleColors.RED);
+                    System.out.println("bye, bye");
                     System.exit(0);
                     break;
                 case "add":
