@@ -27,7 +27,8 @@ public class TaskManager {
         //   ---Choose of action logic --- //
 
         Scanner scan = new Scanner(System.in);
-        System.out.print("your's action: ");
+        System.out.println(ConsoleColors.GREEN_BOLD);
+        System.out.print("your's action: "+ConsoleColors.RESET);
         while (scan.hasNextLine()) {
             String choosenAction = scan.nextLine();
             switch (choosenAction) {
@@ -56,7 +57,8 @@ public class TaskManager {
 
             }
             DisplayMenu.display(menu);
-            System.out.print("your's action: ");
+            System.out.println(ConsoleColors.GREEN_BOLD);
+            System.out.print("your's action: "+ConsoleColors.RESET);
 
         }
 
